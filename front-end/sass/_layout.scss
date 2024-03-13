@@ -1,0 +1,27 @@
+.header {
+  height: 95vh;
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 6rem;
+  }
+
+  &__slogan {
+    font-size: 9rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 8rem;
+    text-transform: uppercase;
+  }
+
+  &__subtitle {
+    font-size: 2rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    color: var(--color-grey-dark-1);
+  }
+}
