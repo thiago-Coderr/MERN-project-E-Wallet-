@@ -1,0 +1,64 @@
+////////////////////////////////////////////////////////////////////
+/// Sub header
+.sub__content {
+  margin: 10rem auto;
+  display: grid;
+  gap: 15rem;
+  grid-template-columns: 25rem 40rem;
+  justify-content: center;
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+
+    &__main__text {
+      font-size: 2.5rem;
+      font-weight: 400;
+      line-height: 4.5rem;
+      color: var(--color-primary);
+      .sub__title {
+        color: var(--color-blue-sky);
+      }
+    }
+
+    &__secondary__text {
+      font-size: 1.7rem;
+      color: var(--text-secondary);
+    }
+
+    &__button {
+      font-size: 1.6rem;
+      border: 1px solid var(--color-blue-sky);
+      border-radius: 2rem;
+      padding: 1rem 2.5rem;
+
+      color: var(--color-blue-sky);
+      width: 16rem;
+      background-color: #fff;
+
+      &:hover {
+        cursor: pointer;
+        background-color: var(--color-blue-sky);
+        color: #fff;
+      }
+    }
+  }
+
+  &__pictures {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    &__support__1 {
+      max-width: 80%;
+    }
+
+    &__support__2 {
+      width: 50%;
+      position: absolute;
+      top: 24rem;
+      left: 22rem;
+    }
+  }
+}
