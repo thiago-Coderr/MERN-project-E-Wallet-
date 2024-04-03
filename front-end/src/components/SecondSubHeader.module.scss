@@ -1,0 +1,120 @@
+//////////////////////////////////////////////////
+/// Second subheader
+.second__subHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url(../img/back-image.svg);
+
+  &__text {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+
+    margin-top: 8rem;
+
+    &__primary {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 4.5rem;
+
+      color: #fff;
+    }
+
+    &__secondary {
+      font-size: 1.4rem;
+      color: #fff;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__statistics {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+
+    &__elements {
+      margin-top: 13rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      &__main {
+        font-size: 2.5rem;
+        font-weight: 700;
+        line-height: 4.5rem;
+        color: #fff;
+      }
+
+      &__second {
+        font-size: 1.7rem;
+        color: #fff;
+      }
+    }
+  }
+
+  &__summary {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 50%;
+    font-size: 1.4rem;
+    color: #fff;
+  }
+
+  .flags {
+    display: grid;
+    grid-template-columns: 20rem 20rem 20rem 20rem;
+    gap: 2rem;
+    margin-top: 4rem;
+
+    &__and__name {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      border-radius: 0.5rem;
+      background-color: var(--color-primary);
+      color: #fff;
+
+      font-size: 1.5rem;
+      font-weight: 600;
+      padding: 1rem 2rem;
+
+      &:hover {
+        color: var(--color-blue-sky);
+      }
+    }
+  }
+
+  .second__btn {
+    margin-top: 4rem;
+    margin-bottom: 8rem;
+
+    font-size: 1.4rem;
+    padding: 1rem 2.5rem;
+    border-radius: 2.5rem;
+    color: var(--color-blue-sky);
+    border: 1px solid var(--color-blue-sky);
+
+    &:hover {
+      background-color: var(--color-blue-sky);
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+}
