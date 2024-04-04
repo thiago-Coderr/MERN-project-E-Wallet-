@@ -23,4 +23,31 @@ router.post("/signup", async (req, res) => {
   return res.json({ status: true, message: "record registed" });
 });
 
+// Login with user credentials
+router.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+  const user = await userModel.findOne({ email });
+  if (!user) {
+    return res.json({
+      status: false,
+      message: "*Wrong email or not registed*",
+    });
+  }
+
+  const validPassword = await bcrypt.compare(password, user.password);
+  if (!validPassword) {
+    return res.json({ status: false, message: "*Invalid Password!*" });
+  }
+
+  const token = jwt.sign({ username: user.email }, process.env.KEY, {
+    expiresIn: "1h",
+  });
+
+  res.cookie("token", token, { httpOnly: true, maxAge: 3600000 });
+
+  return res.json({
+    status: true,
+  });
+});
+
 module.exports = router;
