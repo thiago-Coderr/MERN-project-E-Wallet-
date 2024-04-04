@@ -1,0 +1,58 @@
+//////////////////////////////////////////////////////////
+/// Tertiary sub header
+.tertiarySubHeader {
+  margin: 10rem auto;
+  display: grid;
+  gap: 15rem;
+  grid-template-columns: 40rem 25rem;
+  justify-content: center;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+
+    &__main__text {
+      font-size: 2.5rem;
+      font-weight: 400;
+      line-height: 4.5rem;
+      color: var(--color-primary);
+    }
+
+    &__secondary__text {
+      font-size: 1.7rem;
+      color: var(--text-secondary);
+    }
+
+    .btn__learn__more {
+      list-style: none;
+      font-size: 1.5rem;
+    }
+
+    .new_style {
+      font-size: 1.5rem;
+      background-color: var(--color-green);
+      color: #fff;
+      padding: 0 1rem;
+      border-radius: 2rem;
+    }
+
+    .btn__learn__more {
+      border: 1px solid var(--color-blue-sky);
+      width: 9rem;
+      padding: 1rem 2rem;
+      border-radius: 2rem;
+      color: var(--color-blue-sky);
+
+      &:hover {
+        background-color: var(--color-blue-sky);
+        color: #fff;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .main__picture {
+    width: 80%;
+  }
+}
