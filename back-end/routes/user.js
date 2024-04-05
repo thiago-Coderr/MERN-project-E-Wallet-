@@ -50,4 +50,46 @@ router.post("/login", async (req, res) => {
   });
 });
 
+//forgot password
+router.post("/forgot-password", async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    const user = await userModel.findOne({ email });
+
+    if (!user) {
+      return res.json({ message: "Email does not exist" });
+    }
+
+    const token = jwt.sign({ id: user._id }, process.env.KEY, {
+      expiresIn: "5min",
+    });
+
+    var transporter = nodeMailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "tiagoafonso110@gmail.com",
+        pass: "ovyl ttki lidz hclo",
+      },
+    });
+
+    var mailOptions = {
+      from: "tiagoafonso110@gmail.com",
+      to: email,
+      subject: "Reset password",
+      text: `http://localhost:5173/reset-password/${token}`,
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        return res.json({ message: "Error sending email" });
+      } else {
+        return res.json({ status: true, message: "Email sent successfully" });
+      }
+    });
+  } catch (error) {
+    console.log(err);
+  }
+});
+
 module.exports = router;
