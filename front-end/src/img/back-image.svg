@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1440px" height="1386px" viewBox="0 0 1440 1386" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>Trusted all ove the world</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="1440" height="1386"></rect>
+        <linearGradient x1="62.0196387%" y1="-0.313311688%" x2="44.1985732%" y2="75.1566558%" id="linearGradient-3">
+            <stop stop-color="#574AE2" offset="0%"></stop>
+            <stop stop-color="#574AE2" stop-opacity="0.59" offset="57%"></stop>
+            <stop stop-color="#574AE2" stop-opacity="0.24" offset="87%"></stop>
+            <stop stop-color="#574AE2" stop-opacity="0.1" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="62.0196387%" y1="-0.313311688%" x2="44.1985732%" y2="75.1566558%" id="linearGradient-4">
+            <stop stop-color="#574AE2" offset="0%"></stop>
+            <stop stop-color="#574AE2" stop-opacity="0.59" offset="57%"></stop>
+            <stop stop-color="#574AE2" stop-opacity="0.24" offset="87%"></stop>
+            <stop stop-color="#574AE2" stop-opacity="0.1" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="56.2590594%" y1="23.8370779%" x2="38.3657273%" y2="100.313312%" id="linearGradient-5">
+            <stop stop-color="#37517E" stop-opacity="0.1" offset="0%"></stop>
+            <stop stop-color="#37517E" stop-opacity="0.35" offset="24%"></stop>
+            <stop stop-color="#37517E" stop-opacity="0.97" offset="74%"></stop>
+            <stop stop-color="#37517E" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="56.2590594%" y1="23.8370779%" x2="38.3657273%" y2="100.313312%" id="linearGradient-6">
+            <stop stop-color="#37517E" stop-opacity="0.1" offset="0%"></stop>
+            <stop stop-color="#37517E" stop-opacity="0.35" offset="24%"></stop>
+            <stop stop-color="#37517E" stop-opacity="0.97" offset="74%"></stop>
+            <stop stop-color="#37517E" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="3.68271315%" x2="50%" y2="77.0809659%" id="linearGradient-7">
+            <stop stop-color="#2F4468" stop-opacity="0.0731431159" offset="0%"></stop>
+            <stop stop-color="#2F4468" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Trusted-all-ove-the-world">
+            <g id="CTA">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Background-(dark-navy)" fill="#2F4468" xlink:href="#path-1"></use>
+                <polygon id="Shape" fill="url(#linearGradient-3)" fill-rule="nonzero" opacity="0.4" mask="url(#mask-2)" points="1284.42026 1034.17518 1068 1034.17518 1539.57974 -74 1756 -74"></polygon>
+                <polygon id="Shape-Copy-2" fill="url(#linearGradient-4)" fill-rule="nonzero" opacity="0.3" mask="url(#mask-2)" points="-281.405358 1367 -587.236179 1367 79.1691793 -199 385 -199"></polygon>
+                <polygon id="Shape-Copy-9" fill="url(#linearGradient-5)" fill-rule="nonzero" mask="url(#mask-2)" transform="translate(1375.000000, 1076.641790) scale(-1, -1) translate(-1375.000000, -1076.641790) " points="1247.42026 1633.28358 1031 1633.28358 1502.57974 520 1719 520"></polygon>
+                <polygon id="Shape-Copy-10" fill="url(#linearGradient-6)" fill-rule="nonzero" mask="url(#mask-2)" transform="translate(286.500000, 273.706113) scale(-1, -1) translate(-286.500000, -273.706113) " points="165.781378 800.412225 -39 800.412225 407.218622 -253 612 -253"></polygon>
+            </g>
+            <rect id="shadow" fill="url(#linearGradient-7)" x="145" y="1221" width="1151" height="55"></rect>
+        </g>
+    </g>
+</svg>
