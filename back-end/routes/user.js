@@ -92,4 +92,28 @@ router.post("/forgot-password", async (req, res) => {
   }
 });
 
+//Reset a new password
+router.post("/reset-password/:token", async (req, res) => {
+  const { token } = req.params;
+  const { password } = req.body;
+  const newPassword = password;
+
+  try {
+    const decoded = await jwt.verify(token, process.env.KEY);
+    const id = decoded.id;
+    const hashPassword = await bcrypt.hash(newPassword, 10);
+
+    await userModel.findByIdAndUpdate(
+      { _id: id },
+      {
+        password: hashPassword,
+      }
+    );
+
+    return res.json({ status: true, message: "Password updated successfully" });
+  } catch (error) {
+    return res.json({ message: "Invalid token" });
+  }
+});
+
 module.exports = router;
