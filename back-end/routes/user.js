@@ -116,4 +116,35 @@ router.post("/reset-password/:token", async (req, res) => {
   }
 });
 
+const verifyToken = async (req, res, next) => {
+  try {
+    const token =
+      req.cookies.token || req.headers["x-access-token"] || req.query.token;
+
+    if (!token) {
+      return res.json({
+        status: false,
+        message: "No token provided",
+      });
+    }
+
+    const decoded = jwt.verify(token, process.env.KEY);
+    req.decoded = decoded;
+    next();
+  } catch (error) {
+    return res.json({ error: error });
+  }
+};
+
+//Dashboard authentication
+router.get("/dash-board", verifyToken, async (req, res) => {
+  const email = req.decoded.username;
+  const user = await userModel.findOne({ email });
+  res.json({
+    status: true,
+    message: "Welcome to the dashboard!",
+    user,
+  });
+});
+
 module.exports = router;
