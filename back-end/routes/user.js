@@ -147,4 +147,12 @@ router.get("/dash-board", verifyToken, async (req, res) => {
   });
 });
 
+router.get("/logout", async (req, res) => {
+  res.clearCookie("token");
+  res.json({
+    status: true,
+    message: "Logged out successfully",
+  });
+});
+
 module.exports = router;
