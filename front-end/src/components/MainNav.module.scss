@@ -1,0 +1,42 @@
+.mainNav__container {
+  position: fixed;
+  height: 6rem;
+  background-color: #fff;
+  width: calc(100% - 20%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 75rem;
+  border-bottom: 1.5px solid var(--color-tertiary);
+
+  .currentTab {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    width: 9rem;
+  }
+
+  .userName__logout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+
+    &__username {
+      font-size: 1.5rem;
+      color: var(--color-primary);
+    }
+
+    &__logout {
+      cursor: pointer;
+      font-size: 1.4rem;
+      font-weight: 600;
+      background-color: var(--color-blue-sky);
+      color: #fff;
+      outline: none;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 4rem;
+    }
+  }
+}
