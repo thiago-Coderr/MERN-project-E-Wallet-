@@ -155,4 +155,374 @@ router.get("/logout", async (req, res) => {
   });
 });
 
+//set date and hour function
+function setDateAndHour() {
+  const currentDate = new Date();
+
+  console.log(currentDate);
+
+  const year = currentDate.getFullYear();
+  const month = String(currentDate.getMonth() + 1).padStart(2, "0"); // Months are zero-based
+  const day = String(currentDate.getDate()).padStart(2, "0");
+
+  // Get the current time components
+  const hours = String(currentDate.getHours()).padStart(2, "0");
+  const minutes = String(currentDate.getMinutes()).padStart(2, "0");
+
+  const date = `${day}-${month}-${year}`;
+  const time = `${hours}:${minutes}`;
+
+  return { date: date, time: time };
+}
+
+///////////////////////////////////////////////////////////////////////
+///////   SEND MONEY //////////////////////////////////////////////////
+
+// Send USD
+router.post("/sendUsd", verifyToken, async (req, res) => {
+  const senderEmail = req.decoded.username;
+  const { email, amount } = req.body;
+
+  try {
+    const receiver = await userModel.findOne({ email });
+    const sender = await userModel.findOne({ email: senderEmail });
+
+    if (!receiver) {
+      return res.json({
+        status: false,
+        message: "User doesn't exist",
+      });
+    }
+
+    if (receiver.email === senderEmail) {
+      return res.json({
+        status: false,
+        message: "Choose another receiver",
+      });
+    }
+
+    const actualBalance = sender.accountBalances.USD - amount;
+    if (actualBalance < 0) {
+      return res.json({
+        status: false,
+        message: "Insufficient balance",
+      });
+    }
+
+    const dateAndtime = setDateAndHour();
+    const sentBalance = receiver.accountBalances.USD + amount;
+
+    // Update sender's balance and transaction array
+    sender.accountBalances.USD = actualBalance;
+    sender.transactions.push({
+      type: "withdrawal",
+      status: "Sent",
+      method: "PayMe",
+      receiverEmail: receiver.email,
+      receiverName: receiver.username,
+      amount: amount,
+      currency: "USD",
+      dateTime: { date: dateAndtime.date, timeZone: dateAndtime.time },
+    });
+
+    let array = sender.recipients.filter(
+      (recipient) => recipient.userEmail === receiver.email
+    );
+
+    if (array.length == 0) {
+      sender.recipients.push({
+        username: receiver.username,
+        userEmail: receiver.email,
+      });
+    }
+
+    await sender.save();
+
+    // Update receiver's balance and transaction array
+    receiver.accountBalances.USD = sentBalance;
+    receiver.transactions.push({
+      type: "deposit",
+      status: "Received",
+      method: "PayMe",
+      senderEmail: sender.email,
+      senderName: sender.username,
+      amount: amount,
+      currency: "USD",
+      dateTime: { date: dateAndtime.date, timeZone: dateAndtime.time },
+    });
+    await receiver.save();
+
+    return res.json({
+      status: true,
+      message: "Sent successfully",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: false,
+      message: "Internal Server Error",
+    });
+  }
+});
+
+// Send GBP
+
+router.post("/sendGbp", verifyToken, async (req, res) => {
+  const senderEmail = req.decoded.username;
+  const { email, amount } = req.body;
+
+  try {
+    const receiver = await userModel.findOne({ email });
+    const sender = await userModel.findOne({ email: senderEmail });
+
+    if (!receiver) {
+      return res.json({
+        status: false,
+        message: "User doesn't exist",
+      });
+    }
+
+    if (receiver.email === senderEmail) {
+      return res.json({
+        status: false,
+        message: "Choose another receiver",
+      });
+    }
+
+    const actualBalance = sender.accountBalances.GBP - amount;
+    if (actualBalance < 0) {
+      return res.json({
+        status: false,
+        message: "Insufficient balance",
+      });
+    }
+
+    const dateAndtime = setDateAndHour();
+    const sentBalance = receiver.accountBalances.GBP + amount;
+
+    // Update sender's balance and transaction array
+    sender.accountBalances.GBP = actualBalance;
+    sender.transactions.push({
+      type: "withdrawal",
+      status: "Sent",
+      method: "PayMe",
+      receiverEmail: receiver.email,
+      receiverName: receiver.username,
+      amount: amount,
+      currency: "GBP",
+      dateTime: { date: dateAndtime.date, timeZone: dateAndtime.time },
+    });
+
+    let array = sender.recipients.filter(
+      (recipient) => recipient.userEmail === receiver.email
+    );
+
+    if (array.length == 0) {
+      sender.recipients.push({
+        username: receiver.username,
+        userEmail: receiver.email,
+      });
+    }
+
+    await sender.save();
+
+    // Update receiver's balance and transaction array
+    receiver.accountBalances.GBP = sentBalance;
+    receiver.transactions.push({
+      type: "deposit",
+      status: "Received",
+      method: "PayMe",
+      senderEmail: sender.email,
+      senderName: sender.username,
+      amount: amount,
+      currency: "GBP",
+      dateTime: { date: dateAndtime.date, timeZone: dateAndtime.time },
+    });
+    await receiver.save();
+
+    return res.json({
+      status: true,
+      message: "Sent successfully",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: false,
+      message: "Internal Server Error",
+    });
+  }
+});
+
+// Send EUR
+
+router.post("/sendEur", verifyToken, async (req, res) => {
+  const senderEmail = req.decoded.username;
+  const { email, amount } = req.body;
+
+  try {
+    const receiver = await userModel.findOne({ email });
+    const sender = await userModel.findOne({ email: senderEmail });
+
+    if (!receiver) {
+      return res.json({
+        status: false,
+        message: "User doesn't exist",
+      });
+    }
+
+    if (receiver.email === senderEmail) {
+      return res.json({
+        status: false,
+        message: "Choose another receiver",
+      });
+    }
+
+    const actualBalance = sender.accountBalances.EUR - amount;
+    if (actualBalance < 0) {
+      return res.json({
+        status: false,
+        message: "Insufficient balance",
+      });
+    }
+
+    const dateAndtime = setDateAndHour();
+    const sentBalance = receiver.accountBalances.EUR + amount;
+
+    // Update sender's balance and transaction array
+    sender.accountBalances.EUR = actualBalance;
+    sender.transactions.push({
+      type: "withdrawal",
+      status: "Sent",
+      method: "PayMe",
+      receiverEmail: receiver.email,
+      receiverName: receiver.username,
+      amount: amount,
+      currency: "EUR",
+      dateTime: { date: dateAndtime.date, timeZone: dateAndtime.time },
+    });
+
+    let array = sender.recipients.filter(
+      (recipient) => recipient.userEmail === receiver.email
+    );
+
+    if (array.length == 0) {
+      sender.recipients.push({
+        username: receiver.username,
+        userEmail: receiver.email,
+      });
+    }
+
+    await sender.save();
+
+    // Update receiver's balance and transaction array
+    receiver.accountBalances.EUR = sentBalance;
+    receiver.transactions.push({
+      type: "deposit",
+      status: "Received",
+      method: "PayMe",
+      senderEmail: sender.email,
+      senderName: sender.username,
+      amount: amount,
+      currency: "EUR",
+      dateTime: { date: dateAndtime.date, timeZone: dateAndtime.time },
+    });
+    await receiver.save();
+
+    return res.json({
+      status: true,
+      message: "Sent successfully",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: false,
+      message: "Internal Server Error",
+    });
+  }
+});
+
+// Send INR
+
+router.post("/sendInr", verifyToken, async (req, res) => {
+  const senderEmail = req.decoded.username;
+  const { email, amount } = req.body;
+
+  try {
+    const receiver = await userModel.findOne({ email });
+    const sender = await userModel.findOne({ email: senderEmail });
+
+    if (!receiver) {
+      return res.json({
+        status: false,
+        message: "User doesn't exist",
+      });
+    }
+
+    if (receiver.email === senderEmail) {
+      return res.json({
+        status: false,
+        message: "Choose another receiver",
+      });
+    }
+
+    const actualBalance = sender.accountBalances.INR - amount;
+    if (actualBalance < 0) {
+      return res.json({
+        status: false,
+        message: "Insufficient balance",
+      });
+    }
+
+    const dateAndtime = setDateAndHour();
+    const sentBalance = receiver.accountBalances.INR + amount;
+
+    // Update sender's balance and transaction array
+    sender.accountBalances.INR = actualBalance;
+    sender.transactions.push({
+      type: "withdrawal",
+      status: "Sent",
+      method: "PayMe",
+      receiverEmail: receiver.email,
+      receiverName: receiver.username,
+      amount: amount,
+      currency: "INR",
+      dateTime: { date: dateAndtime.date, timeZone: dateAndtime.time },
+    });
+
+    let array = sender.recipients.filter(
+      (recipient) => recipient.userEmail === receiver.email
+    );
+
+    if (array.length == 0) {
+      sender.recipients.push({
+        username: receiver.username,
+        userEmail: receiver.email,
+      });
+    }
+
+    await sender.save();
+
+    // Update receiver's balance and transaction array
+    receiver.accountBalances.INR = sentBalance;
+    receiver.transactions.push({
+      type: "deposit",
+      status: "Received",
+      method: "PayMe",
+      senderEmail: sender.email,
+      senderEmail: sender.username,
+      amount: amount,
+      currency: "INR",
+      dateTime: { date: dateAndtime.date, timeZone: dateAndtime.time },
+    });
+    await receiver.save();
+
+    return res.json({
+      status: true,
+      message: "Sent successfully",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: false,
+      message: "Internal Server Error",
+    });
+  }
+});
+
 module.exports = router;
