@@ -1,0 +1,71 @@
+////////////////////////////////////////////////////////////
+////// HERO SECTION
+.hero__section {
+  height: 85vh;
+  background-image: url(../img/header-background.svg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 8rem;
+    color: #fff;
+    padding-top: 8rem;
+
+    font-size: 3rem;
+    text-transform: uppercase;
+  }
+
+  .blue_dot {
+    color: var(--color-blue-sky);
+  }
+
+  &__subtitle {
+    font-size: 2rem;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 3rem;
+  }
+
+  &__btn {
+    color: #fff;
+    display: flex;
+    gap: 3rem;
+    align-content: center;
+    list-style: none;
+
+    margin-top: 4rem;
+
+    &__send {
+      font-size: 1.6rem;
+      color: #fff;
+      border: none;
+      outline: none;
+      padding: 1rem 2.5rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      background-color: var(--color-blue-sky);
+      text-decoration: none;
+    }
+
+    &__open {
+      font-size: 1.6rem;
+      border: none;
+      border-radius: 2rem;
+      padding: 1rem 2.5rem;
+      cursor: pointer;
+      color: #fff;
+      background-color: var(--color-green);
+      text-decoration: none;
+    }
+  }
+}
