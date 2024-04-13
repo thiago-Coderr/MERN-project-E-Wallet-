@@ -1,0 +1,12 @@
+.main__content__container {
+  width: calc(100% - 20%);
+  display: flex;
+  flex-direction: column;
+  margin-left: 20%;
+
+  .scroll_box {
+    height: 53.9rem;
+    overflow: auto;
+    margin-top: 6rem;
+  }
+}
