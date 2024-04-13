@@ -1,0 +1,61 @@
+.selfdeposit__container {
+  margin-top: 4rem;
+  margin-left: 2rem;
+  margin-bottom: 4rem;
+
+  .title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 2rem;
+  }
+
+  .selfdeposit__records {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+
+    .transaction {
+      height: 7rem;
+      width: 80rem;
+      padding: 0 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1.5px solid var(--color-tertiary);
+
+      &_method {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--color-primary);
+        width: 12rem;
+      }
+
+      &_amount {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--color-green);
+      }
+
+      &_status {
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 700;
+        color: var(--color-blue-sky);
+      }
+
+      &_dateTime {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        font-size: 1.2rem;
+        color: var(--color-blue-sky);
+        font-weight: 700;
+      }
+    }
+  }
+}
