@@ -1,0 +1,99 @@
+.sidebar__container_fixed {
+  position: fixed;
+  background-color: var(--color-country);
+  width: 20%;
+  height: 100vh;
+
+  .logo__container {
+    display: flex;
+    justify-content: center;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    color: #fff;
+    margin-bottom: 2.5rem;
+
+    &__logo {
+      margin-top: 2rem;
+    }
+
+    &__dot {
+      margin-top: 2rem;
+      color: var(--color-blue-sky);
+    }
+  }
+
+  &_items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .sidebar__item {
+      position: relative;
+      display: flex;
+      gap: 1.5rem;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #fff;
+      list-style: none;
+      padding: 1rem 5.5rem;
+    }
+
+    .actualTab {
+      background-color: var(--color-blue-sky);
+      display: flex;
+      gap: 1.5rem;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #fff;
+      list-style: none;
+      padding: 1rem 5.5rem;
+    }
+
+    .sidebar__item::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 3px;
+      transform: scaleY(0);
+      transition: transform 0.2s, width 0.4s cubic-bezier(1, 0, 0, 1) 0.2s;
+      background-color: var(--color-blue-sky);
+    }
+
+    .sidebar__item:hover::before {
+      transform: scaleY(1);
+      width: 100%;
+      cursor: pointer;
+    }
+
+    .actualTab:hover {
+      cursor: pointer;
+    }
+
+    .sidebar__item > span {
+      position: relative;
+      z-index: 10;
+      cursor: pointer;
+    }
+
+    .sidebar__icon {
+      position: relative;
+      width: 1.7rem;
+      height: 1.7rem;
+      fill: #fff;
+      z-index: 10;
+    }
+  }
+  .legal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.1rem;
+    margin-top: 32rem;
+  }
+}
