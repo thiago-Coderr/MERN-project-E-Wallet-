@@ -1,0 +1,68 @@
+.payments__container {
+  margin-top: 4rem;
+  margin-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+
+  .transaction {
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.25);
+    height: 10rem;
+    width: 80rem;
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4rem;
+
+    &_name {
+      font-size: 1.5rem;
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+
+    &_method {
+      font-family: "Poppins", sans-serif;
+      font-style: italic;
+      color: var(--color-blue-sky);
+      font-size: 1.5rem;
+
+      &_dot {
+        color: var(--color-green);
+      }
+    }
+
+    &_amount {
+      font-size: 1.5rem;
+
+      font-weight: 700;
+      color: var(--color-green);
+    }
+
+    &_email {
+      font-weight: 400;
+      color: var(--color-blue-sky);
+      font-size: 1.3rem;
+    }
+
+    &_date {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      font-size: 1.2rem;
+      color: var(--color-blue-sky);
+      font-weight: 700;
+    }
+
+    &_status {
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      color: var(--color-blue-sky);
+    }
+  }
+}
