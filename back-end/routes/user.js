@@ -776,4 +776,129 @@ router.post("/addGbpAmazon", verifyToken, async (req, res) => {
   }
 });
 
+///// Add EUR
+
+router.post("/addEurWise", verifyToken, async (req, res) => {
+  const adderEmail = req.decoded.username;
+  const { email, amount } = req.body;
+
+  try {
+    if (adderEmail != email) {
+      return res.json({
+        status: false,
+        message: "TransferWise email must be same",
+      });
+    }
+
+    const dateAndtime = setDateAndHour();
+
+    const adder = await userModel.findOne({ email });
+    const addedAmount = adder.accountBalances.EUR + amount;
+
+    // Update added balance and transaction array
+    adder.accountBalances.EUR = addedAmount;
+    adder.transactions.push({
+      type: "deposit",
+      method: "Transfer Wise",
+      adder: "Me",
+      amount: amount,
+      currency: "EUR",
+      dateTime: { date: dateAndtime.date, timeZone: dateAndtime.time },
+    });
+    await adder.save();
+
+    return res.json({
+      status: true,
+      message: "Added successfully",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: false,
+      message: "Internal Server Error",
+    });
+  }
+});
+
+router.post("/addEurGpay", verifyToken, async (req, res) => {
+  const adderEmail = req.decoded.username;
+  const { email, amount } = req.body;
+
+  try {
+    if (adderEmail != email) {
+      return res.json({
+        status: false,
+        message: "Google pay email must be same",
+      });
+    }
+
+    const dateAndtime = setDateAndHour();
+
+    const adder = await userModel.findOne({ email });
+    const addedAmount = adder.accountBalances.EUR + amount;
+
+    // Update added balance and transaction array
+    adder.accountBalances.EUR = addedAmount;
+    adder.transactions.push({
+      type: "deposit",
+      method: "Google pay",
+      adder: "Me",
+      amount: amount,
+      currency: "EUR",
+      dateTime: { date: dateAndtime.date, timeZone: dateAndtime.time },
+    });
+    await adder.save();
+
+    return res.json({
+      status: true,
+      message: "Added successfully",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: false,
+      message: "Internal Server Error",
+    });
+  }
+});
+
+router.post("/addEurPaypal", verifyToken, async (req, res) => {
+  const adderEmail = req.decoded.username;
+  const { email, amount } = req.body;
+
+  try {
+    if (adderEmail != email) {
+      return res.json({
+        status: false,
+        message: "Paypal email must be same",
+      });
+    }
+
+    const dateAndtime = setDateAndHour();
+
+    const adder = await userModel.findOne({ email });
+    const addedAmount = adder.accountBalances.EUR + amount;
+
+    // Update added balance and transaction array
+    adder.accountBalances.EUR = addedAmount;
+    adder.transactions.push({
+      type: "deposit",
+      method: "Paypal",
+      adder: "Me",
+      amount: amount,
+      currency: "EUR",
+      dateTime: { date: dateAndtime.date, timeZone: dateAndtime.time },
+    });
+    await adder.save();
+
+    return res.json({
+      status: true,
+      message: "Added successfully",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: false,
+      message: "Internal Server Error",
+    });
+  }
+});
+
 module.exports = router;
