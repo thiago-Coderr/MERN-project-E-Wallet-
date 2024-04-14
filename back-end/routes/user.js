@@ -651,4 +651,129 @@ router.post("/addUsdAmazon", verifyToken, async (req, res) => {
   }
 });
 
+////Add GBP
+
+router.post("/addGbpPayoneer", verifyToken, async (req, res) => {
+  const adderEmail = req.decoded.username;
+  const { email, amount } = req.body;
+
+  try {
+    if (adderEmail != email) {
+      return res.json({
+        status: false,
+        message: "Payoneer email must be same",
+      });
+    }
+
+    const dateAndtime = setDateAndHour();
+
+    const adder = await userModel.findOne({ email });
+    const addedAmount = adder.accountBalances.GBP + amount;
+
+    // Update added balance and transaction array
+    adder.accountBalances.GBP = addedAmount;
+    adder.transactions.push({
+      type: "deposit",
+      method: "Payoneer",
+      adder: "Me",
+      amount: amount,
+      currency: "GBP",
+      dateTime: { date: dateAndtime.date, timeZone: dateAndtime.time },
+    });
+    await adder.save();
+
+    return res.json({
+      status: true,
+      message: "Added successfully",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: false,
+      message: "Internal Server Error",
+    });
+  }
+});
+
+router.post("/addGbpRevolut", verifyToken, async (req, res) => {
+  const adderEmail = req.decoded.username;
+  const { email, amount } = req.body;
+
+  try {
+    if (adderEmail != email) {
+      return res.json({
+        status: false,
+        message: "Revolut email must be same",
+      });
+    }
+
+    const dateAndtime = setDateAndHour();
+
+    const adder = await userModel.findOne({ email });
+    const addedAmount = adder.accountBalances.GBP + amount;
+
+    // Update added balance and transaction array
+    adder.accountBalances.GBP = addedAmount;
+    adder.transactions.push({
+      type: "deposit",
+      method: "Revolut",
+      adder: "Me",
+      amount: amount,
+      currency: "GBP",
+      dateTime: { date: dateAndtime.date, timeZone: dateAndtime.time },
+    });
+    await adder.save();
+
+    return res.json({
+      status: true,
+      message: "Added successfully",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: false,
+      message: "Internal Server Error",
+    });
+  }
+});
+
+router.post("/addGbpAmazon", verifyToken, async (req, res) => {
+  const adderEmail = req.decoded.username;
+  const { email, amount } = req.body;
+
+  try {
+    if (adderEmail != email) {
+      return res.json({
+        status: false,
+        message: "Amazon email must be same",
+      });
+    }
+
+    const dateAndtime = setDateAndHour();
+
+    const adder = await userModel.findOne({ email });
+    const addedAmount = adder.accountBalances.GBP + amount;
+
+    // Update added balance and transaction array
+    adder.accountBalances.GBP = addedAmount;
+    adder.transactions.push({
+      type: "deposit",
+      method: "Amazon pay",
+      adder: "Me",
+      amount: amount,
+      currency: "GBP",
+      dateTime: { date: dateAndtime.date, timeZone: dateAndtime.time },
+    });
+    await adder.save();
+
+    return res.json({
+      status: true,
+      message: "Added successfully",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: false,
+      message: "Internal Server Error",
+    });
+  }
+});
+
 module.exports = router;
