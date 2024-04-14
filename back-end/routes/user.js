@@ -901,4 +901,88 @@ router.post("/addEurPaypal", verifyToken, async (req, res) => {
   }
 });
 
+///// Add INR
+
+router.post("/addInrPaytm", verifyToken, async (req, res) => {
+  const adderEmail = req.decoded.username;
+  const { email, amount } = req.body;
+
+  try {
+    if (adderEmail != email) {
+      return res.json({
+        status: false,
+        message: "Paytm email must be same",
+      });
+    }
+
+    const dateAndtime = setDateAndHour();
+
+    const adder = await userModel.findOne({ email });
+    const addedAmount = adder.accountBalances.INR + amount;
+
+    // Update added balance and transaction array
+    adder.accountBalances.INR = addedAmount;
+    adder.transactions.push({
+      type: "deposit",
+      method: "Paytm",
+      adder: "Me",
+      amount: amount,
+      currency: "INR",
+      dateTime: { date: dateAndtime.date, timeZone: dateAndtime.time },
+    });
+    await adder.save();
+
+    return res.json({
+      status: true,
+      message: "Added successfully",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: false,
+      message: "Internal Server Error",
+    });
+  }
+});
+
+router.post("/addInrPhonepe", verifyToken, async (req, res) => {
+  const adderEmail = req.decoded.username;
+  const { email, amount } = req.body;
+
+  try {
+    if (adderEmail != email) {
+      return res.json({
+        status: false,
+        message: "Phonepe email must be same",
+      });
+    }
+
+    const dateAndtime = setDateAndHour();
+
+    const adder = await userModel.findOne({ email });
+    const addedAmount = adder.accountBalances.INR + amount;
+
+    // Update added balance and transaction array
+    adder.accountBalances.INR = addedAmount;
+    adder.transactions.push({
+      type: "deposit",
+      method: "Phonepe",
+      adder: "Me",
+      amount: amount,
+      currency: "INR",
+      dateTime: { date: dateAndtime.date, timeZone: dateAndtime.time },
+    });
+    await adder.save();
+
+    return res.json({
+      status: true,
+      message: "Added successfully",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: false,
+      message: "Internal Server Error",
+    });
+  }
+});
+
 module.exports = router;
